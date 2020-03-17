@@ -81,8 +81,8 @@
     canvas.addEventListener('mousemove', ev_mousemove, false);
     window.addEventListener('mouseup', ev_mouseup, false);
 
-    canvas.addEventListener('touchstart', ev_mousedown, false);
-    canvas.addEventListener('touchmove', ev_mousemove, false);
+    canvas.addEventListener('touchstart', ev_touchstart, false);
+    canvas.addEventListener('touchmove', ev_touchmove, false);
     window.addEventListener('touchend', ev_mouseup, false);
 
     ctx = canvas.getContext('2d');
@@ -91,6 +91,32 @@
 
     function ev_mouseup(ev) {
         started = false;
+    }
+
+    function ev_touchstart(ev) {
+        ev.preventDefault();
+        started = true;
+        var x = ev.touches[0].clientX;
+        var y = ev.touches[0].clientY;
+        x = x - canvas.offsetLeft;
+        y = y - canvas.offsetTop;
+
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    }
+
+    function ev_touchmove(ev) {
+        ev.preventDefault();
+
+        var x = ev.touches[0].clientX;
+        var y = ev.touches[0].clientY;
+        x = x - canvas.offsetLeft;
+        y = y - canvas.offsetTop;
+
+        if (started) {
+            ctx.lineTo(x, y);
+            ctx.stroke();
+        }
     }
 
     function ev_mousedown(ev) {
