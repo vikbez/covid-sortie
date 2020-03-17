@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attestation de déplacement</title>
+</head>
+<body>
+
+<style type="text/css">
+    body {margin: 4em;}
+    @media print { #reset_btn {display: none;} }
+    button {font-size: 20px;}
+</style>
+
+<h1>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h1>
+
+<p>En application de l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19 :</p>
+
+
+<form>
+    <h4><b>Je soussigné(e)</b></h4>
+    <label for="name"><b>Mme / M.</b></label>
+    <input id="name" type="text"><br/>
+
+    <label for="born"><b>Né(e) le :</b></label>
+    <input id="born" type="date"><br/>
+
+    <label for="address"><b>Demeurant :</b></label>
+    <input id="address" type="text"><br/>
+
+
+    <h4>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19:</h4>
+
+    <p>
+        <input id="choix_a" type="radio" name="choix">
+        <label for="choix_a" id="label_choix_a"><b>déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle, lorsqu'ils sont indispensables à l'exercice d'activités ne pouvant être organisées sous forme de télétravail (sur justificatif permanent) ou déplacements professionnels ne pouvant être différés;</b></label>
+    </p>
+
+    <p>
+        <input id="choix_b" type="radio" name="choix">
+        <label for="choix_b" id="label_choix_b"><b>déplacements pour effectuer des achats de première nécessité dans des établissements autorisés (liste sur gouvernement.fr);</b></label>
+    </p>
+
+    <p>
+        <input id="choix_c" type="radio" name="choix">
+        <label for="choix_c" id="label_choix_c"><b>déplacements pour motif de santé;</b></label>
+    </p>
+
+    <p>
+        <input id="choix_d" type="radio" name="choix">
+        <label for="choix_d" id="label_choix_d"><b>déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou la garde d'enfants;</b></label>
+    </p>
+
+    <p>
+        <input id="choix_e" type="radio" name="choix">
+        <label for="choix_e" id="label_choix_e"><b>déplacements brefs, à proximité du domicile, liés à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive collective, et aux besoins des animaux de compagnie.</b></label>
+    </p>
+
+    <p align="right">
+        <label for="place">Fait à </label><input type="text" id="place">
+        <label for="date">le </label><input type="date" id="date"><br>
+        (signature)<br/>
+        <canvas style="border: 1px solid black" id="signature" width="400" height="300"></canvas><br/>
+        <a href="#" onclick="can_clear();" id="clear_btn">Effacer</a>
+
+    </p>
+
+</form>
+
+<center><button onclick="render();" id="render_btn">Génerer</button></center><br/>
+<center><button onclick="window.location.reload();" id="reset_btn">Remise à zéro</button></center>
+
+<script type="text/javascript">
+
+    function $(id) { return document.getElementById(id); }
+
+    // CANVAS HANDLING
+
+    var canvas = $('signature');
+    canvas.addEventListener('mousedown', ev_mousedown, false);
+    canvas.addEventListener('mousemove', ev_mousemove, false);
+    window.addEventListener('mouseup', ev_mouseup, false);
+
+    ctx = canvas.getContext('2d');
+
+    var started = false;
+
+    function ev_mouseup(ev) {
+        started = false;
+    }
+
+    function ev_mousedown(ev) {
+        started = true;
+        ctx.beginPath();
+        ctx.moveTo(ev.offsetX, ev.offsetY);
+    }
+
+    function ev_mousemove(ev) {
+        if (started) {
+            ctx.lineTo(ev.offsetX, ev.offsetY);
+            ctx.stroke();
+        }
+    }
+
+    function can_clear() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // RENDERING
+
+    function render() {
+        canvas.removeEventListener('mousedown', ev_mousedown);
+        canvas.style.cssText = "border: none;";
+
+        $("clear_btn").remove();
+        $("render_btn").remove();
+
+        to_render = ['name', 'born', 'address', 'place', 'date'];
+        to_render.forEach(function(el) {
+            $(el).insertAdjacentHTML('afterend', $(el).value);
+            $(el).remove();
+        });
+
+        to_disable = ['choix_a', 'choix_b', 'choix_c', 'choix_d', 'choix_e'];
+        to_disable.forEach(function(el) {
+            if (!$(el).checked) {
+                $(el).remove();
+                $('label_' + el).remove();
+            }
+        });
+
+        window.print();
+
+    }
+
+</script>
+
+</body>
+</html>
