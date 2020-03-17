@@ -80,7 +80,13 @@
 <script type="text/javascript">
 
     function $(id) { return document.getElementById(id); }
-    $('date').valueAsDate = new Date();
+    var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (is_safari) {
+        $('date').value = new Date().toLocaleDateString();
+    } else {
+        $('date').valueAsDate = new Date();
+    }
 
     // CANVAS HANDLING
 
