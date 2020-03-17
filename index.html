@@ -81,6 +81,10 @@
     canvas.addEventListener('mousemove', ev_mousemove, false);
     window.addEventListener('mouseup', ev_mouseup, false);
 
+    canvas.addEventListener('touchstart', ev_mousedown, false);
+    canvas.addEventListener('touchmove', ev_mousemove, false);
+    window.addEventListener('touchend', ev_mouseup, false);
+
     ctx = canvas.getContext('2d');
 
     var started = false;
