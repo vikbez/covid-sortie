@@ -44,6 +44,13 @@
         border: 1px solid #999;
     }
 
+    #warning {
+        border: 1px solid #c00;
+        background-color: #fcc;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+
     @media screen and (max-width : 640px) {
         html { font-size: 200%;}
         input[type=radio] {zoom: 200%;}
@@ -56,10 +63,13 @@
         footer {display: none;}
         body {margin: 0;}
         #page {padding: 0; border: 0;}
+        #warning {display: none;}
     }
 
 
 </style>
+
+<div id='warning'>Attention, l'attestation en ligne ne serait finalement pas valable; attendons la suite (voir <a href="https://www.bfmtv.com/tech/confinement-finalement-l-attestation-sur-smartphone-ne-suffit-pas-1877104.html">cet article de bfmtv)</a></div>
 
 <div id='page'>
 
