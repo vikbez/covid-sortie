@@ -34,10 +34,15 @@
         width: 8em;
     }
 
-    #name, #born, #address {
+    #name, #born {
         width: 10em;
         border: 1px solid #999;
         margin-bottom: 1em;
+    }
+    #address {
+        width: 24em;
+        border: 1px solid #999;
+        margin-bottom: -1em;
     }
 
     #date, #place {
@@ -60,7 +65,7 @@
 
     @media screen and (max-width : 640px) {
         html { font-size: 200%;}
-        input[type=radio] {zoom: 200%;}
+        input[type=checkbox] {zoom: 200%;}
         canvas {font-size: 100%;}
         #page {padding: 1em; border: 0;}
     }
@@ -97,33 +102,34 @@
     <input id="born" type="text" placeholder="jj/mm/aaaa"><br/>
 
     <label class="lbl" for="address"><b>Demeurant :</b></label>
-    <input id="address" type="text"><br/>
-
+    <textarea id="address" rows="2" cols="32"></textarea>
+    <!--input id="address" type="text"-->
+    <br/>
     <br/>
     <p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19:</p>
     <br/>
     <p>
-        <input id="choix_a" type="radio" name="choix">
+        <input id="choix_a" type="checkbox" name="choix">
         <label for="choix_a" id="label_choix_a">déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle, lorsqu'ils sont indispensables à l'exercice d'activités ne pouvant être organisées sous forme de télétravail (sur justificatif permanent) ou déplacements professionnels ne pouvant être différés;</label>
     </p>
 
     <p>
-        <input id="choix_b" type="radio" name="choix">
+        <input id="choix_b" type="checkbox" name="choix">
         <label for="choix_b" id="label_choix_b">déplacements pour effectuer des achats de première nécessité dans des établissements autorisés (liste sur gouvernement.fr);</label>
     </p>
 
     <p>
-        <input id="choix_c" type="radio" name="choix">
+        <input id="choix_c" type="checkbox" name="choix">
         <label for="choix_c" id="label_choix_c">déplacements pour motif de santé;</label>
     </p>
 
     <p>
-        <input id="choix_d" type="radio" name="choix">
+        <input id="choix_d" type="checkbox" name="choix">
         <label for="choix_d" id="label_choix_d">déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou la garde d'enfants;</label>
     </p>
 
     <p>
-        <input id="choix_e" type="radio" name="choix">
+        <input id="choix_e" type="checkbox" name="choix">
         <label for="choix_e" id="label_choix_e">déplacements brefs, à proximité du domicile, liés à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive collective, et aux besoins des animaux de compagnie.</label>
     </p>
 
@@ -229,7 +235,11 @@ Le code source est <a href="https://github.com/vikbez/covid-sortie">disponible s
 
         to_render = ['name', 'born', 'address', 'place', 'date'];
         to_render.forEach(function(el) {
-            $(el).insertAdjacentHTML('afterend', $(el).value);
+            if (el == 'address') {
+                $(el).insertAdjacentHTML('afterend', "".concat("<div style='margin-left:8.5em;margin-top:-1em'>", $(el).value.trim().replace(/\n/g, "<br/>\n"), "</div>"));
+            } else {
+                $(el).insertAdjacentHTML('afterend', $(el).value);
+            }
             $(el).remove();
         });
 
