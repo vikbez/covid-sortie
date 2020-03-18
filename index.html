@@ -94,7 +94,7 @@
     <input id="name" type="text"><br/>
 
     <label class="lbl" for="born"><b>Né(e) le :</b></label>
-    <input id="born" type="date"><br/>
+    <input id="born" type="text" placeholder="jj/mm/aaaa"><br/>
 
     <label class="lbl" for="address"><b>Demeurant :</b></label>
     <input id="address" type="text"><br/>
@@ -129,7 +129,7 @@
 
     <p align="right">
         <label for="place">Fait à </label><input type="text" id="place">
-        <label for="date">&nbsp;le </label><input type="date" id="date"><br>
+        <label for="date">&nbsp;le </label><input type="text" id="date"><br>
         (signature)<br/><br/>
         <canvas style="border: 1px solid #999" id="signature" width="600" height="200"></canvas><br/>
         <button type="button" onclick="can_clear();" id="clear_btn">Effacer</button>
@@ -151,13 +151,8 @@ Le code source est <a href="https://github.com/vikbez/covid-sortie">disponible s
 <script type="text/javascript">
 
     function $(id) { return document.getElementById(id); }
-    var is_safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-    if (is_safari) {
-        $('date').value = new Date().toLocaleDateString();
-    } else {
-        $('date').valueAsDate = new Date();
-    }
+    $('date').value = new Date().toLocaleDateString();
 
     // CANVAS HANDLING
 
