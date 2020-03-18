@@ -27,12 +27,21 @@
         font-size: 1em;
     }
 
+    #address {
+        width:160px;
+        height:40px;
+    }
+
+    .addressfield * {
+        vertical-align: middle;
+    }
+
     .lbl {
         display: inline-block;
         width: 8em;
     }
 
-    #name, #born, #address {
+    #name, #born {
         width: 10em;
         border: 1px solid #999;
     }
@@ -60,64 +69,66 @@
 
 <div id='page'>
 
-<center><h1>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h1></center>
+    <center><h1>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h1></center>
 
-<p>En application de l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19 :</p>
+    <p>En application de l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19 :</p>
 
 
-<form>
-    <p><b>Je soussigné(e)</b></p>
-    <br/>
-    <label class="lbl" for="name"><b>Mme / M.</b></label>
-    <input id="name" type="text"><br/>
+    <form>
+        <p><b>Je soussigné(e)</b></p>
+        <br/>
+        <label class="lbl" for="name"><b>Mme / M.</b></label>
+        <input id="name" type="text"><br/>
 
-    <label class="lbl" for="born"><b>Né(e) le :</b></label>
-    <input id="born" type="date"><br/>
+        <label class="lbl" for="born"><b>Né(e) le :</b></label>
+        <input id="born" type="date"><br/>
 
-    <label class="lbl" for="address"><b>Demeurant :</b></label>
-    <input id="address" type="text"><br/>
+        <div class="addressfield">
+            <label class="lbl" for="address"><b>Demeurant :</b></label>
+            <textarea id="address" rows="5" cols="20"></textarea>
+        </div>
 
-    <br/>
-    <p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19:</p>
-    <br/>
-    <p>
-        <input id="choix_a" type="radio" name="choix">
-        <label for="choix_a" id="label_choix_a">déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle, lorsqu'ils sont indispensables à l'exercice d'activités ne pouvant être organisées sous forme de télétravail (sur justificatif permanent) ou déplacements professionnels ne pouvant être différés;</label>
-    </p>
+        <br/>
+        <p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19:</p>
+        <br/>
+        <p>
+            <input id="choix_a" type="radio" name="choix">
+            <label for="choix_a" id="label_choix_a">déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle, lorsqu'ils sont indispensables à l'exercice d'activités ne pouvant être organisées sous forme de télétravail (sur justificatif permanent) ou déplacements professionnels ne pouvant être différés;</label>
+        </p>
 
-    <p>
-        <input id="choix_b" type="radio" name="choix">
-        <label for="choix_b" id="label_choix_b">déplacements pour effectuer des achats de première nécessité dans des établissements autorisés (liste sur gouvernement.fr);</label>
-    </p>
+        <p>
+            <input id="choix_b" type="radio" name="choix">
+            <label for="choix_b" id="label_choix_b">déplacements pour effectuer des achats de première nécessité dans des établissements autorisés (liste sur gouvernement.fr);</label>
+        </p>
 
-    <p>
-        <input id="choix_c" type="radio" name="choix">
-        <label for="choix_c" id="label_choix_c">déplacements pour motif de santé;</label>
-    </p>
+        <p>
+            <input id="choix_c" type="radio" name="choix">
+            <label for="choix_c" id="label_choix_c">déplacements pour motif de santé;</label>
+        </p>
 
-    <p>
-        <input id="choix_d" type="radio" name="choix">
-        <label for="choix_d" id="label_choix_d">déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou la garde d'enfants;</label>
-    </p>
+        <p>
+            <input id="choix_d" type="radio" name="choix">
+            <label for="choix_d" id="label_choix_d">déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou la garde d'enfants;</label>
+        </p>
 
-    <p>
-        <input id="choix_e" type="radio" name="choix">
-        <label for="choix_e" id="label_choix_e">déplacements brefs, à proximité du domicile, liés à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive collective, et aux besoins des animaux de compagnie.</label>
-    </p>
+        <p>
+            <input id="choix_e" type="radio" name="choix">
+            <label for="choix_e" id="label_choix_e">déplacements brefs, à proximité du domicile, liés à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive collective, et aux besoins des animaux de compagnie.</label>
+        </p>
 
-    <p align="right">
-        <label for="place">Fait à </label><input type="text" id="place">
-        <label for="date">le </label><input type="date" id="date"><br>
-        (signature)<br/>
-        <canvas style="border: 1px solid #999" id="signature" width="600" height="200"></canvas><br/>
-        <button onclick="can_clear();" id="clear_btn">Effacer</button>
+        <p align="right">
+            <label for="place">Fait à </label><input type="text" id="place">
+            <label for="date">le </label><input type="date" id="date"><br>
+            (signature)<br/>
+            <canvas style="border: 1px solid #999" id="signature" width="600" height="200"></canvas><br/>
+            <button onclick="can_clear();" id="clear_btn">Effacer</button>
 
-    </p>
+        </p>
 
-</form>
+    </form>
 
-<center><button onclick="render();" id="render_btn">Génerer</button></center><br/>
-<center><button onclick="window.location.reload();" id="reset_btn">Remise à zéro</button></center>
+    <center><button onclick="render();" id="render_btn">Génerer</button></center><br/>
+    <center><button onclick="window.location.reload();" id="reset_btn">Remise à zéro</button></center>
 
 </div>
 
