@@ -2,71 +2,115 @@
 <html>
 <head>
     <title>Attestation de déplacement</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
 </head>
 <body>
 
 <style type="text/css">
-    body {margin: 4em;}
-    button {font-size: 20px;}
-    footer {font-size: 14px; margin-top: 50px;}
+    html { width: 100%; text-size-adjust: none; }
+
+    body {
+        width: 210mm;
+        margin: 1em auto;
+        font-family: Verdana, Geneva, sans-serif;
+    }
+
+    button {font-size: 2em; border: 1px solid black;}
+    footer {font-size: 1em; margin-top: 50px;}
+
+    #page {
+        border: 1px solid black;
+        padding: 1em;
+    }
+
+    input, label, p {
+        font-size: 1em;
+    }
+
+    .lbl {
+        display: inline-block;
+        width: 8em;
+    }
+
+    #name, #born, #address {
+        width: 10em;
+        border: 1px solid #999;
+    }
+
+    #date, #place {
+        border: 1px solid #999;
+    }
+
+    @media screen and (max-width : 640px) {
+        html { font-size: 200%;}
+        input[type=radio] {zoom: 200%;}
+        canvas {font-size: 100%;}
+        #page {padding: 1em; border: 0;}
+    }
 
     @media print {
         #reset_btn {display: none;}
         footer {display: none;}
+        body {margin: 0;}
+        #page {padding: 0; border: 0;}
     }
+
 
 </style>
 
-<h1>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h1>
+<div id='page'>
+
+<center><h1>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h1></center>
 
 <p>En application de l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19 :</p>
 
 
 <form>
-    <h4><b>Je soussigné(e)</b></h4>
-    <label for="name"><b>Mme / M.</b></label>
+    <p><b>Je soussigné(e)</b></p>
+    <br/>
+    <label class="lbl" for="name"><b>Mme / M.</b></label>
     <input id="name" type="text"><br/>
 
-    <label for="born"><b>Né(e) le :</b></label>
+    <label class="lbl" for="born"><b>Né(e) le :</b></label>
     <input id="born" type="date"><br/>
 
-    <label for="address"><b>Demeurant :</b></label>
+    <label class="lbl" for="address"><b>Demeurant :</b></label>
     <input id="address" type="text"><br/>
 
-
-    <h4>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19:</h4>
-
+    <br/>
+    <p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19:</p>
+    <br/>
     <p>
         <input id="choix_a" type="radio" name="choix">
-        <label for="choix_a" id="label_choix_a"><b>déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle, lorsqu'ils sont indispensables à l'exercice d'activités ne pouvant être organisées sous forme de télétravail (sur justificatif permanent) ou déplacements professionnels ne pouvant être différés;</b></label>
+        <label for="choix_a" id="label_choix_a">déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle, lorsqu'ils sont indispensables à l'exercice d'activités ne pouvant être organisées sous forme de télétravail (sur justificatif permanent) ou déplacements professionnels ne pouvant être différés;</label>
     </p>
 
     <p>
         <input id="choix_b" type="radio" name="choix">
-        <label for="choix_b" id="label_choix_b"><b>déplacements pour effectuer des achats de première nécessité dans des établissements autorisés (liste sur gouvernement.fr);</b></label>
+        <label for="choix_b" id="label_choix_b">déplacements pour effectuer des achats de première nécessité dans des établissements autorisés (liste sur gouvernement.fr);</label>
     </p>
 
     <p>
         <input id="choix_c" type="radio" name="choix">
-        <label for="choix_c" id="label_choix_c"><b>déplacements pour motif de santé;</b></label>
+        <label for="choix_c" id="label_choix_c">déplacements pour motif de santé;</label>
     </p>
 
     <p>
         <input id="choix_d" type="radio" name="choix">
-        <label for="choix_d" id="label_choix_d"><b>déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou la garde d'enfants;</b></label>
+        <label for="choix_d" id="label_choix_d">déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou la garde d'enfants;</label>
     </p>
 
     <p>
         <input id="choix_e" type="radio" name="choix">
-        <label for="choix_e" id="label_choix_e"><b>déplacements brefs, à proximité du domicile, liés à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive collective, et aux besoins des animaux de compagnie.</b></label>
+        <label for="choix_e" id="label_choix_e">déplacements brefs, à proximité du domicile, liés à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive collective, et aux besoins des animaux de compagnie.</label>
     </p>
 
     <p align="right">
         <label for="place">Fait à </label><input type="text" id="place">
         <label for="date">le </label><input type="date" id="date"><br>
         (signature)<br/>
-        <canvas style="border: 1px solid black" id="signature" width="400" height="300"></canvas><br/>
-        <a href="#" onclick="can_clear();" id="clear_btn">Effacer</a>
+        <canvas style="border: 1px solid #999" id="signature" width="600" height="200"></canvas><br/>
+        <button onclick="can_clear();" id="clear_btn">Effacer</button>
 
     </p>
 
@@ -74,6 +118,8 @@
 
 <center><button onclick="render();" id="render_btn">Génerer</button></center><br/>
 <center><button onclick="window.location.reload();" id="reset_btn">Remise à zéro</button></center>
+
+</div>
 
 <center><footer>Conforme RGPD, certifié sans stockage et sans cookies. code dispo sur <a href="https://github.com/vikbez/covid-sortie">https://github.com/vikbez/covid-sortie</a></footer></center>
 
@@ -110,10 +156,11 @@
     function ev_touchstart(ev) {
         ev.preventDefault();
         started = true;
+        var rect = canvas.getBoundingClientRect();
         var x = ev.touches[0].clientX;
         var y = ev.touches[0].clientY;
-        x = x - canvas.offsetLeft;
-        y = y - canvas.offsetTop;
+        x = x - rect.left;
+        y = y - rect.top;
 
         ctx.beginPath();
         ctx.moveTo(x, y);
@@ -121,11 +168,11 @@
 
     function ev_touchmove(ev) {
         ev.preventDefault();
-
+        var rect = canvas.getBoundingClientRect();
         var x = ev.touches[0].clientX;
         var y = ev.touches[0].clientY;
-        x = x - canvas.offsetLeft;
-        y = y - canvas.offsetTop;
+        x = x - rect.left;
+        y = y - rect.top;
 
         if (started) {
             ctx.lineTo(x, y);
@@ -148,6 +195,7 @@
 
     function can_clear() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        return false;
     }
 
     // RENDERING
@@ -174,7 +222,6 @@
         });
 
         window.print();
-
     }
 
 </script>
