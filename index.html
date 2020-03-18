@@ -44,9 +44,16 @@
         border: 1px solid #999;
     }
 
-    #warning {
+    #info {
         border: 1px solid #00c;
         background-color: #ccf;
+        padding: 1em;
+        margin-bottom: 1em;
+    }
+
+    #warning {
+        border: 1px solid #c00;
+        background-color: #fcc;
         padding: 1em;
         margin-bottom: 1em;
     }
@@ -63,13 +70,15 @@
         footer {display: none;}
         body {margin: 0;}
         #page {padding: 0; border: 0;}
-        #warning {display: none;}
+        #warning, #info {display: none;}
     }
 
 
 </style>
 
-<div id='warning'>Attention, l'attestation sur telephone ne serait finalement pas valable; attendons la suite (voir <a href="https://www.bfmtv.com/tech/confinement-finalement-l-attestation-sur-smartphone-ne-suffit-pas-1877104.html">cet article de bfmtv)</a> - Cependant toujours valable en imprimant</div>
+<div id='info'>Attention, l'attestation sur telephone ne serait finalement pas valable; attendons la suite (voir <a href="https://www.bfmtv.com/tech/confinement-finalement-l-attestation-sur-smartphone-ne-suffit-pas-1877104.html">cet article de bfmtv)</a>. Elle reste cependant toujours valable en l'imprimant</div>
+
+<div id='warning'>Avez vous <b>VRAIMENT</b> besoin de cette attestation ? Rappelez vous que rester confiné sauve des vies !</div>
 
 <div id='page'>
 
