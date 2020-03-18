@@ -12,11 +12,11 @@
     body {
         width: 210mm;
         margin: 1em auto;
-        font-family: Verdana, Geneva, sans-serif;
     }
 
     button {font-size: 2em; border: 1px solid black;}
     footer {font-size: 1em; margin-top: 50px;}
+    canvas {border-radius: 8px;}
 
     #page {
         border: 1px solid black;
@@ -35,6 +35,7 @@
     #name, #born, #address {
         width: 10em;
         border: 1px solid #999;
+        margin-bottom: 1em;
     }
 
     #date, #place {
@@ -107,8 +108,8 @@
 
     <p align="right">
         <label for="place">Fait à </label><input type="text" id="place">
-        <label for="date">le </label><input type="date" id="date"><br>
-        (signature)<br/>
+        <label for="date">&nbsp;le </label><input type="date" id="date"><br>
+        (signature)<br/><br/>
         <canvas style="border: 1px solid #999" id="signature" width="600" height="200"></canvas><br/>
         <button onclick="can_clear();" id="clear_btn">Effacer</button>
 
