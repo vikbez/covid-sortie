@@ -177,6 +177,10 @@ Le code source est <a href="https://github.com/vikbez/covid-sortie">disponible s
 
 <script type="text/javascript">
 
+    document.body.onload = function() {
+      $('name').focus()
+    }
+
     function $(id) { return document.getElementById(id); }
 
     $('date').value = new Date().toLocaleDateString('fr-FR');
