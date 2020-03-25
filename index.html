@@ -4,77 +4,78 @@
     <title>Attestation de déplacement</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style type="text/css">
+
+        html { width: 100%; text-size-adjust: none; }
+    
+        body {
+            width: 210mm;
+            margin: 1em auto;
+            font-family: Verdana, Geneva, sans-serif;
+        }
+    
+        button {font-size: 2em; border: 1px solid black;}
+        footer {font-size: 1em; margin-top: 50px;}
+        canvas {border-radius: 8px;}
+    
+        #page {
+            border: 1px solid black;
+            padding: 1em;
+        }
+    
+        input, label, p {
+            font-size: 1em;
+        }
+    
+        .lbl {
+            display: inline-block;
+            width: 8em;
+        }
+    
+        #name, #born, #address {
+            width: 10em;
+            border: 1px solid #999;
+            margin-bottom: 1em;
+        }
+    
+        #date, #place {
+            border: 1px solid #999;
+        }
+    
+        #info {
+            border: 1px solid #00c;
+            background-color: #ccf;
+            padding: 1em;
+            margin-bottom: 1em;
+        }
+    
+        #warning {
+            border: 1px solid #c00;
+            background-color: #fcc;
+            padding: 1em;
+            margin-bottom: 1em;
+        }
+    
+        @media screen and (max-width : 640px) {
+            html { font-size: 200%;}
+            input[type=radio] {zoom: 200%;}
+            canvas {font-size: 100%;}
+            #page {padding: 1em; border: 0;}
+        }
+    
+        @media print {
+            #reset_btn {display: none;}
+            footer {display: none;}
+            body {margin: 0;}
+            #page {padding: 0; border: 0;}
+            #warning, #info {display: none;}
+        }
+
+  </style>
+
 </head>
 <body>
-
-<style type="text/css">
-    html { width: 100%; text-size-adjust: none; }
-
-    body {
-        width: 210mm;
-        margin: 1em auto;
-        font-family: Verdana, Geneva, sans-serif;
-    }
-
-    button {font-size: 2em; border: 1px solid black;}
-    footer {font-size: 1em; margin-top: 50px;}
-    canvas {border-radius: 8px;}
-
-    #page {
-        border: 1px solid black;
-        padding: 1em;
-    }
-
-    input, label, p {
-        font-size: 1em;
-    }
-
-    .lbl {
-        display: inline-block;
-        width: 8em;
-    }
-
-    #name, #born, #address {
-        width: 10em;
-        border: 1px solid #999;
-        margin-bottom: 1em;
-    }
-
-    #date, #place {
-        border: 1px solid #999;
-    }
-
-    #info {
-        border: 1px solid #00c;
-        background-color: #ccf;
-        padding: 1em;
-        margin-bottom: 1em;
-    }
-
-    #warning {
-        border: 1px solid #c00;
-        background-color: #fcc;
-        padding: 1em;
-        margin-bottom: 1em;
-    }
-
-    @media screen and (max-width : 640px) {
-        html { font-size: 200%;}
-        input[type=radio] {zoom: 200%;}
-        canvas {font-size: 100%;}
-        #page {padding: 1em; border: 0;}
-    }
-
-    @media print {
-        #reset_btn {display: none;}
-        footer {display: none;}
-        body {margin: 0;}
-        #page {padding: 0; border: 0;}
-        #warning, #info {display: none;}
-    }
-
-
-</style>
 
 <div id='info'>Attention, l&rsquo;attestation présentée <b>sur téléphone</b> n&rsquo;est <b>pas valable</b>.<br/> <b>Il faut l&rsquo;imprimer ou l&rsquo;écrire.</b> <a href="https://twitter.com/CCastaner/status/1240377676977897476">Voir la video de Christophe Castaner ici</a>
 
