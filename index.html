@@ -16,237 +16,35 @@
         font-family: Verdana, Geneva, sans-serif;
     }
 
-    button {font-size: 2em; border: 1px solid black;}
     footer {font-size: 1em; margin-top: 50px;}
-    canvas {border-radius: 8px;}
 
     #page {
-        border: 1px solid black;
+        text-align: center;
         padding: 1em;
     }
 
-    input, label, p {
+    p {
         font-size: 1em;
-    }
-
-    .lbl {
-        display: inline-block;
-        width: 8em;
-    }
-
-    #name, #born, #address {
-        width: 10em;
-        border: 1px solid #999;
-        margin-bottom: 1em;
-    }
-
-    #date, #place {
-        border: 1px solid #999;
     }
 
     #info {
         border: 1px solid #00c;
         background-color: #ccf;
         padding: 1em;
-        margin-bottom: 1em;
+        font-size: 2em;
+        margin-bottom: 4em;
     }
-
-    #warning {
-        border: 1px solid #c00;
-        background-color: #fcc;
-        padding: 1em;
-        margin-bottom: 1em;
-    }
-
-    @media screen and (max-width : 640px) {
-        html { font-size: 200%;}
-        input[type=radio] {zoom: 200%;}
-        canvas {font-size: 100%;}
-        #page {padding: 1em; border: 0;}
-    }
-
-    @media print {
-        #reset_btn {display: none;}
-        footer {display: none;}
-        body {margin: 0;}
-        #page {padding: 0; border: 0;}
-        #warning, #info {display: none;}
-    }
-
 
 </style>
 
-<div id='info'>Attention, l'attestation présentée <b>sur téléphone</b> n'est <b>pas valable</b>.<br/> <b>Il faut l'imprimer ou l'écrire.</b> <a href="https://twitter.com/CCastaner/status/1240377676977897476">Voir la video de Christophe Castaner ici</a>
+<div id='info'>Je ferme cette page, elle ne présente maintenant aucun intérêt comparé au formulaire sur le <a href="https://www.gouvernement.fr/info-coronavirus">site du le gouvernement</a></div>
 
-</div>
-
-<div id='warning'>Avez vous <b>VRAIMENT</b> besoin de cette attestation ? Rappelez vous que rester confiné sauve des vies ! <a href="https://www.reddit.com/r/france/comments/flbgbv/coup_de_gueule_dune_infirmi%C3%A8re_sur_le_front/"><b>Allez voir ce qu'en pense cette infirmiere</b></a></div>
-
-<div id='page'>
-
-<center><h1>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h1></center>
-
-<p>En application de l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19 :</p>
-
-
-<form>
-    <p><b>Je soussigné(e)</b></p>
-    <br/>
-    <label class="lbl" for="name"><b>Mme / M.</b></label>
-    <input id="name" type="text"><br/>
-
-    <label class="lbl" for="born"><b>Né(e) le :</b></label>
-    <input id="born" type="text" placeholder="jj/mm/aaaa"><br/>
-
-    <label class="lbl" for="address"><b>Demeurant :</b></label>
-    <input id="address" type="text"><br/>
-
-    <br/>
-    <p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l'article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19:</p>
-    <br/>
-    <p>
-        <input id="choix_a" type="radio" name="choix">
-        <label for="choix_a" id="label_choix_a">déplacements entre le domicile et le lieu d'exercice de l'activité professionnelle, lorsqu'ils sont indispensables à l'exercice d'activités ne pouvant être organisées sous forme de télétravail (sur justificatif permanent) ou déplacements professionnels ne pouvant être différés;</label>
-    </p>
-
-    <p>
-        <input id="choix_b" type="radio" name="choix">
-        <label for="choix_b" id="label_choix_b">déplacements pour effectuer des achats de première nécessité dans des établissements autorisés (liste sur <a href="https://www.gouvernement.fr">gouvernement.fr</a>);</label>
-    </p>
-
-    <p>
-        <input id="choix_c" type="radio" name="choix">
-        <label for="choix_c" id="label_choix_c">déplacements pour motif de santé;</label>
-    </p>
-
-    <p>
-        <input id="choix_d" type="radio" name="choix">
-        <label for="choix_d" id="label_choix_d">déplacements pour motif familial impérieux, pour l'assistance aux personnes vulnérables ou la garde d'enfants;</label>
-    </p>
-
-    <p>
-        <input id="choix_e" type="radio" name="choix">
-        <label for="choix_e" id="label_choix_e">déplacements brefs, à proximité du domicile, liés à l'activité physique individuelle des personnes, à l'exclusion de toute pratique sportive collective, et aux besoins des animaux de compagnie.</label>
-    </p>
-
-    <p align="right">
-        <label for="place">Fait à </label><input type="text" id="place">
-        <label for="date">&nbsp;le </label><input type="text" id="date"><br>
-        (signature)<br/><br/>
-        <canvas style="border: 1px solid #999" id="signature" width="600" height="200"></canvas><br/>
-        <button type="button" onclick="can_clear();" id="clear_btn">Effacer</button>
-
-    </p>
-
-</form>
-
-<center><button onclick="render();" id="render_btn">Génerer</button></center><br/>
-<center><button onclick="window.location.reload();" id="reset_btn">Remise à zéro</button></center>
-
-</div>
+<div id='page'><p>Merci a tous ceux ayant contribué !</p></div>
 
 <center><footer>Site créé par <a href="https://www.linkedin.com/in/romaingay/">Romain Gay</a>.<br/>
 J'ai eu cette initiative pour aider mon entourage et j'ai décidé de la partager auprès de la communauté.<br/>
 Ce site est exécuté sur votre navigateur uniquement et je ne collecte aucune information.<br/>
 Le code source est <a href="https://github.com/vikbez/covid-sortie">disponible sur github.com</a><br/><br/>License MIT</footer></center>
-
-<script type="text/javascript">
-
-    function $(id) { return document.getElementById(id); }
-
-    $('date').value = new Date().toLocaleDateString('fr-FR');
-
-    // CANVAS HANDLING
-
-    var canvas = $('signature');
-    canvas.addEventListener('mousedown', ev_mousedown, false);
-    canvas.addEventListener('mousemove', ev_mousemove, false);
-    window.addEventListener('mouseup', ev_mouseup, false);
-
-    canvas.addEventListener('touchstart', ev_touchstart, false);
-    canvas.addEventListener('touchmove', ev_touchmove, false);
-    window.addEventListener('touchend', ev_mouseup, false);
-
-    ctx = canvas.getContext('2d');
-
-    var started = false;
-
-    function ev_mouseup(ev) {
-        started = false;
-    }
-
-    function ev_touchstart(ev) {
-        ev.preventDefault();
-        started = true;
-        var rect = canvas.getBoundingClientRect();
-        var x = ev.touches[0].clientX;
-        var y = ev.touches[0].clientY;
-        x = x - rect.left;
-        y = y - rect.top;
-
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-    }
-
-    function ev_touchmove(ev) {
-        ev.preventDefault();
-        var rect = canvas.getBoundingClientRect();
-        var x = ev.touches[0].clientX;
-        var y = ev.touches[0].clientY;
-        x = x - rect.left;
-        y = y - rect.top;
-
-        if (started) {
-            ctx.lineTo(x, y);
-            ctx.stroke();
-        }
-    }
-
-    function ev_mousedown(ev) {
-        started = true;
-        ctx.beginPath();
-        ctx.moveTo(ev.offsetX, ev.offsetY);
-    }
-
-    function ev_mousemove(ev) {
-        if (started) {
-            ctx.lineTo(ev.offsetX, ev.offsetY);
-            ctx.stroke();
-        }
-    }
-
-    function can_clear() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        return false;
-    }
-
-    // RENDERING
-
-    function render() {
-        canvas.removeEventListener('mousedown', ev_mousedown);
-        canvas.style.cssText = "border: none;";
-
-        $("clear_btn").remove();
-        $("render_btn").remove();
-
-        to_render = ['name', 'born', 'address', 'place', 'date'];
-        to_render.forEach(function(el) {
-            $(el).insertAdjacentHTML('afterend', $(el).value);
-            $(el).remove();
-        });
-
-        to_disable = ['choix_a', 'choix_b', 'choix_c', 'choix_d', 'choix_e'];
-        to_disable.forEach(function(el) {
-            if (!$(el).checked) {
-                $(el).remove();
-                $('label_' + el).remove();
-            }
-        });
-
-        window.print();
-    }
-
-</script>
 
 </body>
 </html>
